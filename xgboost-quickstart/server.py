@@ -3,10 +3,10 @@ from flwr.server.strategy import FedXgbBagging
 
 
 # FL experimental settings
-pool_size = 2
+pool_size = 5
 num_rounds = 5
-num_clients_per_round = 2
-num_evaluate_clients = 2
+num_clients_per_round = 5
+num_evaluate_clients = 5
 
 
 def evaluate_metrics_aggregation(eval_metrics):

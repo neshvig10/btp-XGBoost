@@ -8,11 +8,7 @@ This project provides a minimal code example to enable you to get stated quickly
 
 ## Project Setup
 
-Start by cloning the example project. We prepared a single-line command that you can copy into your shell which will checkout the example for you:
-
-```shell
-git clone --depth=1 https://github.com/adap/flower.git && mv flower/examples/xgboost-quickstart . && rm -rf flower && cd xgboost-quickstart
-```
+Start by cloning the project
 
 This will create a new directory called `xgboost-quickstart` containing the following files:
 
