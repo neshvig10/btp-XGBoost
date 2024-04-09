@@ -143,6 +143,16 @@ class XgbClient(fl.client.Client):
         )
         rmse = float(eval_results.split("\t")[1].split(":")[1])
 
+        predictions = self.bst.predict(valid_dmatrix)
+        # mae = np.mean(np.abs(predictions - valid_dmatrix.get_label()))
+
+        # Calculate R-squared
+        y_true = valid_dmatrix.get_label()
+        y_pred = predictions
+        ss_res = np.sum((y_true - y_pred) ** 2)
+        ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
+        r_squared = 1 - (ss_res / ss_tot)
+
         return EvaluateRes(
             status=Status(
                 code=Code.OK,
@@ -150,7 +160,7 @@ class XgbClient(fl.client.Client):
             ),
             loss=0.0,
             num_examples=num_val,
-            metrics={"RMSE": rmse},
+            metrics={"RMSE": rmse, "R-squared": r_squared},
         )
 
 

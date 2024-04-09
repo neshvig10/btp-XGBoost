@@ -10,9 +10,10 @@ num_evaluate_clients = 2
 def evaluate_metrics_aggregation(eval_metrics):
     """Return an aggregated metric (RMSE) for evaluation."""
     total_num = sum([num for num, _ in eval_metrics])
-    mse_aggregated = sum([metrics["RMSE"] * num for num, metrics in eval_metrics]) / total_num
-    rmse_aggregated = mse_aggregated ** 0.5
-    metrics_aggregated = {"RMSE": rmse_aggregated}
+    rmse_aggregated = sum([metrics["RMSE"] * num for num, metrics in eval_metrics]) / total_num
+    r2_aggregated = sum([metrics["R-squared"] * num for num, metrics in eval_metrics]) / total_num
+    
+    metrics_aggregated = {"RMSE": rmse_aggregated,"R2" : r2_aggregated}
     return metrics_aggregated
 
 # Define strategy
